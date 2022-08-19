@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+ name: agrotest
+spec:
+ replicas: 3
+ revisionHistoryLimit: 2
+ selector:
+   matchLabels:
+     app: agrotest
+ template:
+   metadata:  
+     labels:
+       app: agrotest
+   spec:
+     containers:
+       - name: rollouts-demo-exp
+         image: opsmxdev/issuegen:v3.0.6
+         imagePullPolicy: Always
+         ports:
+           - containerPort: 8088
+ strategy:
+   canary:
+     steps:
+       - setWeight: 20
+       - pause: { duration: 31s }
+       - experiment:
+           analyses:
+             - name : testapps
+               requiredForCompletion: true
+               templateName: testapps
+           templates:
+             - name: baseline
+               specRef: stable
+             - name: canary
+               specRef: canary
