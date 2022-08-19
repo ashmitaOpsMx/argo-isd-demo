@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+ name: testapps
+spec:
+ metrics:
+   - name: testapps
+     provider:
+       opsmx:
+         gateUrl: https://ds312.isd-dev.opsmx.net/
+         application: testapps
+         user: admin
+         lifetimeHours: "0.05"
+         threshold:
+           pass: 80
+           marginal: 60
