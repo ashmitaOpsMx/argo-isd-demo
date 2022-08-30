@@ -4,10 +4,10 @@ kind: Kustomization
 resources:
  - rollout.yaml
  - template.yaml
- images:
+images:
 - name: opsmxdev/issuegen
- newTag: v3.0.6
- namePrefix: opsmx-
+  newTag: v3.0.6
+  namePrefix: opsmx-
  
 commonLabels:
  owner : purushotham
