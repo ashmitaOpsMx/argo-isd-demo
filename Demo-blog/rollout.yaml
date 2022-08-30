@@ -28,7 +28,7 @@ spec:
            analyses:
              - name : testapps
                requiredForCompletion: true
-               templateName: testapps
+               templateName: opsmx-testapps
            templates:
              - name: baseline
                specRef: stable
