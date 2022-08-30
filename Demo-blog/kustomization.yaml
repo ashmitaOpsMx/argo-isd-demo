@@ -6,7 +6,7 @@ resources:
  - template.yaml
 images:
 - name: opsmxdev/issuegen
-  newTag: v3.0.8
+  newTag: v3.0.7
 namePrefix: opsmx-
  
 commonLabels:
